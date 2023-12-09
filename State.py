@@ -16,7 +16,7 @@ class State:
     def setTransition(self, input_symbol: str, next_state: Self, push_symbol: str, pop_symbol:str|None = None):
         '''Sets transition to the next state'''
 
-        self.gamma.append(push_symbol)
+        next_state.gamma.append(push_symbol)
         # self.next[int(input_symbol)] = [next_state]
         # if pop_symbol != None:
         #     self.gamma.pop()
