@@ -88,13 +88,13 @@ class PDA:
         q2: State = State(self.gamma, "q2")
         q2.setFinal()
 
-        self.transitions.append(Transition(q0, "0", "Z",  q0, "0Z"))
-        self.transitions.append(Transition(q0, "0", "0",  q0, "00"))
+        self.transitions.append(Transition(q0, "0", "Z",  q0, "00Z"))
+        self.transitions.append(Transition(q0, "0", "0",  q0, "000"))
         self.transitions.append(Transition(q0, "1", "0",  q1, "e"))
         self.transitions.append(Transition(q1, "1", "0",  q1, "e"))
         self.transitions.append(Transition(q1, "e", "Z",  q2, "Z"))
 
-        result = self.delta("000111", q0)
+        result = self.delta("000111111", q0)
         print(result)
 
 
