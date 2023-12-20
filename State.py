@@ -3,9 +3,10 @@ from typing import List, Self
 from collections import deque
 
 class State:
-    def __init__(self, stack: deque[str]):
+    def __init__(self, stack: deque[str], rep: str):
         self.f: bool =  False
         self.gamma: deque[str] = stack
+        self.rep = rep
         self.next: List[List[State]] = [[], []]
 
     def delta(self, symbol: str) -> List[State]:
@@ -18,17 +19,17 @@ class State:
     def setTransition(self, input_symbol: str, next_state: Self, pop_symbol:str, push_symbol: str|None = None) -> None:
         '''Sets transition to the next state'''
 
-        next_stack: deque[str] = self.gamma.copy()
-        next_stack.pop()
+        # next_stack: deque[str] = self.gamma.copy()
+        # next_stack.pop()
 
-        if push_symbol != None:
-            for letter in reversed(push_symbol):
-                next_stack.append(letter)
+        # if push_symbol != None:
+        #     for letter in reversed(push_symbol):
+        #         next_stack.append(letter)
 
-        next_state.setStack(next_stack)
+        # next_state.setStack(next_stack)
 
 
-        self.next[int(input_symbol)].append(next_state)
+        # self.next[int(input_symbol)].append(next_state)
 
 
 
