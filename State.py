@@ -1,4 +1,4 @@
-from types import NoneType
+from __future__ import annotations
 from typing import List, Self
 from collections import deque
 
@@ -8,28 +8,27 @@ class State:
         self.gamma: deque[str] = stack
         self.next: List[List[State]] = []
 
-    def delta(self, symbol: str) -> List[Self]:
+    def delta(self, symbol: str) -> List[State]:
         '''Returns next states given input symbol.'''
         
+
         return self.next[int(symbol)]
     
-    def setTransition(self, input_symbol: str, next_state: Self, push_symbol: str, pop_symbol:str|None = None):
+    def setTransition(self, input_symbol: str, next_state: Self, pop_symbol:str, push_symbol: str|None = None) -> None:
         '''Sets transition to the next state'''
 
-        next_state.gamma.append(push_symbol)
-        # self.next[int(input_symbol)] = [next_state]
-        # if pop_symbol != None:
-        #     self.gamma.pop()
-        # if push_symbol[-1] == self.getStackSymbol() and len(push_symbol) > 1:
-        #     self.gamma.append(push_symbol[-1])
-        # if pop_symbol != None:
-        #     next_state.gamma.pop()
-        
-        # if push_symbol != None and len(push_symbol) > 1:
-        #     for letter in push_symbol:
-        #         next_state.gamma.append(letter)
+        next_stack: deque[str] = self.gamma.copy()
+        next_stack.pop()
 
-        # self.next.insert(int(input_symbol), [next_state])
+        if push_symbol != None:
+            for letter in reversed(push_symbol):
+                next_stack.append(letter)
+
+        next_state.setStack(next_stack)
+
+        self.next.append(next_state)
+
+
 
     def setFinal(self) -> None:
         '''Sets self.f to True if state is a final state'''
@@ -42,6 +41,10 @@ class State:
     def showStack(self) -> None:
         for symbol in reversed(self.gamma):
             print(f'|{symbol}|\n')
+    
+
+    def setStack(self, stack:deque[str]) -> None:
+        self.gamma = stack
 
 
 

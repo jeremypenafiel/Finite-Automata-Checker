@@ -12,6 +12,10 @@ class PDA:
         isAccepted: bool = False
         currentState: State = self.q[0]
         currentState.showStack()
+        input += 'e'
+        print(input)
+        # for symbol in input:
+        #     nextState: State = currentState.delta(symbol)[0]
 
                     
         return isAccepted
@@ -19,11 +23,14 @@ class PDA:
     def main(self) -> None:
         q0: State = State(self.gamma)
         q1: State = State(self.gamma)
-        # q2: State = State(self.gamma)
-        # q2.setFinal()
-        # q0.setTransition("1", q1, "1")
-        # q0.setTransition("0", q0, "0")
-        # q1.setTransition("0", q1, "0")
+
+        q0.setTransition("0", q0, pop_symbol="Z", push_symbol="AZ")
+        q0.setTransition("0", q0, pop_symbol="A" , push_symbol="AA")
+        q0.setTransition("1", q0, pop_symbol="e", push_symbol=None)
+        q0.setTransition("1", q0, pop_symbol="A" , push_symbol="AA")
+
+        q0.showStack()
+
         self.q.append(q0)
         self.q.append(q1)
         # self.q.append(q2)
@@ -32,7 +39,7 @@ class PDA:
         # q1: State = State(self.gamma)
 
 
-        isAccepted: bool = self.delta("010")
+        isAccepted: bool = self.delta("0011")
 
 
 
