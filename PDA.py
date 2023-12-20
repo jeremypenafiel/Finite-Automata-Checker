@@ -65,8 +65,8 @@ class PDA:
 
         return stack
     
+    
     def main(self) -> None:
-        from StatePDA import State
         q0 = State(self.gamma, "q0")
         q1 = State(self.gamma, "q1")
         q2 = State(self.gamma, "q2")
@@ -78,7 +78,7 @@ class PDA:
         q1.setTransition("1", "0",  q1, "e")
         q1.setTransition("e", "Z",  q2, "Z")
 
-        result = self.delta("000111111", q0)
+        result = self.delta("011", q0)
         print(result)
 
 

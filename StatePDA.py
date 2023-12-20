@@ -11,9 +11,10 @@ class State:
 
 
     def setFinal(self) -> None:
-        """Sets state to final state'''
+        """Sets state to final state
         """      
         self.f = True
+
 
     def delta(self, input_symbol: str, pop_symbol:str) -> Transition|None:
         """Returns a list of transitions that can be done based on the input symbol and the symbol on top of the stack
@@ -30,6 +31,7 @@ class State:
                 return transition
         return None
 
+
     def getTopStackSymbol(self) -> str:
         """Gets the symbol on the top of the stack
 
@@ -39,7 +41,6 @@ class State:
         return self.gamma[-1]
     
 
-    
     def showStack(self) -> None:
         """Prints the stack vertically
         """        
