@@ -21,15 +21,19 @@ class PDA:
         for symbol in string_input:
             print("---\n")
             currentState.showStack()
-            for transition in self.transitions:
-                if (transition.current_state == currentState and 
-                    transition.input_symbol == symbol and 
-                    transition.pop_symbol == currentState.getStackSymbol()):
-                        print(f'd({currentState.rep}, {symbol}, {currentState.getStackSymbol()}) = ({transition.next_state.rep}, {transition.push_symbol})')
-                        next_stack: deque[str] = self.perform_stack_operations(currentState.gamma, transition.push_symbol)
-                        currentState = transition.next_state
-                        currentState.setStack(next_stack)
-                        break
+            # if (transition.current_state == currentState and 
+            #     transition.input_symbol == symbol and 
+            #     transition.pop_symbol == currentState.getStackSymbol()):  
+            transition :Transition|None = self.search_in_transitions(currentState, symbol, currentState.getStackSymbol())
+
+            if transition == None:
+                    return False
+            
+
+            print(f'd({currentState.rep}, {symbol}, {currentState.getStackSymbol()}) = ({transition.next_state.rep}, {transition.push_symbol})')
+            next_stack: deque[str] = self.perform_stack_operations(currentState.gamma, transition.push_symbol)
+            currentState = transition.next_state
+            currentState.setStack(next_stack)
         
         print(currentState)
         isAccepted = currentState.f
