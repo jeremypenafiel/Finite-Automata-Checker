@@ -6,13 +6,14 @@ class State:
     def __init__(self, stack: deque[str]):
         self.f: bool =  False
         self.gamma: deque[str] = stack
-        self.next: List[List[State]] = []
+        self.next: List[List[State]] = [[], []]
 
     def delta(self, symbol: str) -> List[State]:
         '''Returns next states given input symbol.'''
+        return self.next[int(symbol)]
         
 
-        return self.next[int(symbol)]
+        # return type(self) self.next[int(symbol)]
     
     def setTransition(self, input_symbol: str, next_state: Self, pop_symbol:str, push_symbol: str|None = None) -> None:
         '''Sets transition to the next state'''
@@ -27,7 +28,7 @@ class State:
         next_state.setStack(next_stack)
 
 
-        self.next.append(next_state)
+        self.next[int(input_symbol)].append(next_state)
 
 
 

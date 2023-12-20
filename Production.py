@@ -41,7 +41,7 @@ class Production:
         return returned_body[0]
 
     def isHead(self, symbol: str) -> bool:
-        """eturns True if symbol is the head of the production, False otherwise
+        """Returns True if symbol is the head of the production, False otherwise
 
         Args:
             symbol (str): current symbol in string

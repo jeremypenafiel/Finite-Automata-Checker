@@ -14,10 +14,15 @@ class PDA:
         isAccepted: bool = False
         currentState: State = self.q[0]
         # currentState.showStack()
-        input += 'e'
         print(input)
-        # for symbol in input:
-        #     nextState: State = currentState.delta(symbol)[0]
+        for symbol in input:
+            next_states: List[State] = currentState.delta(symbol)
+            for state in next_states:
+                print("State Stack:\n")
+                state.showStack()
+                print("\n")
+
+
 
                     
         return isAccepted
@@ -25,25 +30,20 @@ class PDA:
     def main(self) -> None:
         q0: State = State(self.gamma)
         q1: State = State(self.gamma)
-
-        q0.setTransition("0", q0, pop_symbol="Z", push_symbol="0Z")
-        q0.setTransition("0", q0, pop_symbol="0" , push_symbol="00")
-        # q0.setTransition("1", q0, pop_symbol="e", push_symbol=None)
-        # q0.setTransition("1", q0, pop_symbol="0" , push_symbol="00")
-
         q0.showStack()
+        q0.setTransition("0", q0, pop_symbol="Z", push_symbol="0Z")
+        q0.showStack()
+
+        # q0.setTransition("0", q0, pop_symbol="0" , push_symbol="00")
 
         self.q.append(q0)
         self.q.append(q1)
-        # self.q.append(q2)
-
-        # q0: State = State(self.gamma)
-        # q1: State = State(self.gamma)
 
 
-        isAccepted: bool = self.delta("0011")
+        # isAccepted: bool = self.delta("0")
 
-
+    def push_to_stack(self, symbol: str, state: State) -> None:
+        self.gamma.append(symbol)
 
 if __name__ == "__main__":
     pda: PDA = PDA()
