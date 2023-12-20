@@ -46,6 +46,7 @@ class PDA:
         
         return True
 
+
     def perform_stack_operations(self, stack: deque[str], push_symbol: str) -> deque[str]:
         """Performs stack operations based on the push symbol
 
@@ -65,7 +66,7 @@ class PDA:
 
         return stack
     
-    
+
     def main(self) -> None:
         q0 = State(self.gamma, "q0")
         q1 = State(self.gamma, "q1")
