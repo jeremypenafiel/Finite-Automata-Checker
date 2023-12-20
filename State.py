@@ -26,6 +26,7 @@ class State:
 
         next_state.setStack(next_stack)
 
+
         self.next.append(next_state)
 
 

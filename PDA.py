@@ -9,9 +9,11 @@ class PDA:
         self.gamma.append("Z")
 
     def delta(self, input: str) -> bool:
+        # TODO: 
+
         isAccepted: bool = False
         currentState: State = self.q[0]
-        currentState.showStack()
+        # currentState.showStack()
         input += 'e'
         print(input)
         # for symbol in input:
@@ -24,10 +26,10 @@ class PDA:
         q0: State = State(self.gamma)
         q1: State = State(self.gamma)
 
-        q0.setTransition("0", q0, pop_symbol="Z", push_symbol="AZ")
-        q0.setTransition("0", q0, pop_symbol="A" , push_symbol="AA")
-        q0.setTransition("1", q0, pop_symbol="e", push_symbol=None)
-        q0.setTransition("1", q0, pop_symbol="A" , push_symbol="AA")
+        q0.setTransition("0", q0, pop_symbol="Z", push_symbol="0Z")
+        q0.setTransition("0", q0, pop_symbol="0" , push_symbol="00")
+        # q0.setTransition("1", q0, pop_symbol="e", push_symbol=None)
+        # q0.setTransition("1", q0, pop_symbol="0" , push_symbol="00")
 
         q0.showStack()
 
