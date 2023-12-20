@@ -1,7 +1,7 @@
 from typing import List
 from collections import deque
-from State import State
-from Transition import Transition
+from TransitionPDA import Transition
+from StatePDA import State
 
 class PDA:
     def __init__(self) -> None:
@@ -14,7 +14,7 @@ class PDA:
 
         Args:
             string_input (str): string to be accepted or rejected
-            initial_state (State): initial state of the PDA
+            initial_state (State.State): initial state of the PDA
 
         Returns:
             bool: True if string is accepted, False otherwise
@@ -31,7 +31,7 @@ class PDA:
         for symbol in string_input:
             print("---\n")
             currentState.showStack()
-            transition :Transition|None = self.search_in_transitions(currentState, symbol, currentState.getTopStackSymbol())
+            transition: Transition|None = currentState.delta(symbol, currentState.getTopStackSymbol())
 
             # No transition found
             if transition == None:
@@ -65,40 +65,24 @@ class PDA:
 
         return stack
     
-    def search_in_transitions(self, current_state: State, input_symbol: str, stack_top_symbol: str) -> Transition|None:
-        """Searches for a transition in the list of transitions
-
-        Args:
-            current_state (State): current state
-            input_symbol (str): current input symbol
-            stack_top_symbol (str): current top of stack symbol
-
-        Returns:
-            Transition|None: Transition object if found, None otherwise
-        """        
-        
-        for transition in self.transitions:
-            if transition.current_state == current_state and transition.input_symbol == input_symbol and transition.pop_symbol == stack_top_symbol:
-                return transition
-        return None
-    
     def main(self) -> None:
-        q0: State = State(self.gamma, "q0")
-        q1: State = State(self.gamma, "q1")
-        q2: State = State(self.gamma, "q2")
+        from StatePDA import State
+        q0 = State(self.gamma, "q0")
+        q1 = State(self.gamma, "q1")
+        q2 = State(self.gamma, "q2")
         q2.setFinal()
 
-        self.transitions.append(Transition(q0, "0", "Z",  q0, "00Z"))
-        self.transitions.append(Transition(q0, "0", "0",  q0, "000"))
-        self.transitions.append(Transition(q0, "1", "0",  q1, "e"))
-        self.transitions.append(Transition(q1, "1", "0",  q1, "e"))
-        self.transitions.append(Transition(q1, "e", "Z",  q2, "Z"))
+        q0.setTransition("0", "Z",  q0, "00Z")
+        q0.setTransition("0", "0",  q0, "000")
+        q0.setTransition("1", "0",  q1, "e")
+        q1.setTransition("1", "0",  q1, "e")
+        q1.setTransition("e", "Z",  q2, "Z")
 
         result = self.delta("000111111", q0)
         print(result)
 
 
-
 if __name__ == "__main__":
+
     pda: PDA = PDA()
     pda.main()
