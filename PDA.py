@@ -8,36 +8,27 @@ class PDA:
         self.q: List[State] = list()
         self.gamma: deque[str] = deque()
         self.transitions: List[Transition] = list()
-
         self.gamma.append("Z")
 
     def delta(self, string_input: str, initial_state: State) -> bool:
-        # TODO: 
 
-        isAccepted: bool = False
         currentState: State = initial_state
         string_input += 'e'
-        print(string_input)
+
         for symbol in string_input:
             print("---\n")
             currentState.showStack()
-            # if (transition.current_state == currentState and 
-            #     transition.input_symbol == symbol and 
-            #     transition.pop_symbol == currentState.getStackSymbol()):  
             transition :Transition|None = self.search_in_transitions(currentState, symbol, currentState.getStackSymbol())
 
             if transition == None:
                     return False
             
-
-            print(f'd({currentState.rep}, {symbol}, {currentState.getStackSymbol()}) = ({transition.next_state.rep}, {transition.push_symbol})')
+            print(f'Transition function\nd({currentState.rep}, {symbol}, {currentState.getStackSymbol()}) = ({transition.next_state.rep}, {transition.push_symbol})')
             next_stack: deque[str] = self.perform_stack_operations(currentState.gamma, transition.push_symbol)
             currentState = transition.next_state
             currentState.setStack(next_stack)
         
-        print(currentState)
-        isAccepted = currentState.f
-        return isAccepted
+        return True
 
     def perform_stack_operations(self, stack: deque[str], push_symbol: str) -> deque[str]:
         stack.pop()
@@ -61,13 +52,13 @@ class PDA:
         q2: State = State(self.gamma, "q2")
         q2.setFinal()
 
-        self.transitions.append(Transition(q0, q0, "0", "0Z", "Z"))
-        self.transitions.append(Transition(q0, q0, "0", "00", "0"))
-        self.transitions.append(Transition(q0, q1, "1", "e", "0"))
-        self.transitions.append(Transition(q1, q1, "1", "e", "0"))
-        self.transitions.append(Transition(q1, q2, "e", "Z", "Z"))
+        self.transitions.append(Transition(q0, "0", "Z", q0, "0Z"))
+        self.transitions.append(Transition(q0, "0", "0",  q0, "00"))
+        self.transitions.append(Transition(q0, "1", "0",  q1, "e"))
+        self.transitions.append(Transition(q1, "1", "0",  q1, "e"))
+        self.transitions.append(Transition(q1, "e", "Z",  q2, "Z"))
 
-        result = self.delta("0011", q0)
+        result = self.delta("000111", q0)
         print(result)
 
 

@@ -7,31 +7,6 @@ class State:
         self.f: bool =  False
         self.gamma: deque[str] = stack
         self.rep = rep
-        self.next: List[List[State]] = [[], []]
-
-    def delta(self, symbol: str) -> List[State]:
-        '''Returns next states given input symbol.'''
-        return self.next[int(symbol)]
-        
-
-        # return type(self) self.next[int(symbol)]
-    
-    def setTransition(self, input_symbol: str, next_state: Self, pop_symbol:str, push_symbol: str|None = None) -> None:
-        '''Sets transition to the next state'''
-
-        # next_stack: deque[str] = self.gamma.copy()
-        # next_stack.pop()
-
-        # if push_symbol != None:
-        #     for letter in reversed(push_symbol):
-        #         next_stack.append(letter)
-
-        # next_state.setStack(next_stack)
-
-
-        # self.next[int(input_symbol)].append(next_state)
-
-
 
     def setFinal(self) -> None:
         '''Sets self.f to True if state is a final state'''
