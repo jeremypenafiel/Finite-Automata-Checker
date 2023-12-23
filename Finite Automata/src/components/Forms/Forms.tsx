@@ -7,6 +7,7 @@ import StateForm from "./StateForm";
 
 const Forms = () => {
   const [validated, setValidated] = useState(false);
+  const [stateCounter, setStateCounter] = useState(1);
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -18,30 +19,48 @@ const Forms = () => {
     setValidated(true);
   };
 
+  const handleAddStateClick = () => {
+    setStateCounter(stateCounter + 1);
+  };
+  const handleDeleteStateClick = () => {
+    if (stateCounter === 0) {
+      return;
+    }
+    setStateCounter(stateCounter - 1);
+  };
+
   return (
     <>
       <Form
         noValidate
         validated={validated}
-        action="http://127.0.0.1:5000/PDA"
+        action="http://localhost:5000/PDA"
         method="POST"
+        target="hiddenframe"
         onSubmit={handleSubmit}
       >
-        <Form.Label>Input String</Form.Label>
         <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+          <InputGroup.Text id="basic-addon1">Input String</InputGroup.Text>
           <Form.Control
             required
+            id="inputString"
             name="InputString"
             placeholder="Input String"
             aria-label="Input String"
             aria-describedby="basic-addon1"
           />
         </InputGroup>
-        <StateForm />
-        <TransitionFunctionForm />
+        <button type="button" onClick={handleAddStateClick}>
+          Add State
+        </button>
+        <button type="button" onClick={handleDeleteStateClick}>
+          Delete State
+        </button>
+        <StateForm stateCount={stateCounter} />
+        <TransitionFunctionForm stateCount={stateCounter} />
         <Button type="submit">Test String</Button>
       </Form>
+      <iframe id="hiddenframe" name="hiddenframe"></iframe>
     </>
   );
 };

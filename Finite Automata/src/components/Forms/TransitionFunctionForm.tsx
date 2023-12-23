@@ -9,7 +9,7 @@ interface TransitionFunctionFormProps {
 const TransitionFunctionForm: React.FC<TransitionFunctionFormProps> = ({
   stateCount,
 }) => {
-  const [ruleCounter, setRuleCounter] = useState(0);
+  const [ruleCounter, setRuleCounter] = useState(1);
 
   const handleAddRuleClick = () => {
     setRuleCounter(ruleCounter + 1);
@@ -32,16 +32,16 @@ const TransitionFunctionForm: React.FC<TransitionFunctionFormProps> = ({
       </button>
       {Array.from(Array(ruleCounter)).map((c, index) => {
         return (
-          <InputGroup>
+          <InputGroup key={index}>
             <InputGroup.Text>Rule {index + 1}: </InputGroup.Text>
             {/* <Form.Control
               required
               placeholder="Current State"
               name={`CurrentState ${index}`}
             /> */}
-            <Form.Select>
+            <Form.Select required name={`CurrentState ${index}`}>
               {Array.from(Array(stateCount)).map((c, index) => {
-                return <option>q{index}</option>;
+                return <option key={index}>q{index}</option>;
               })}
             </Form.Select>
             <Form.Control
@@ -54,11 +54,11 @@ const TransitionFunctionForm: React.FC<TransitionFunctionFormProps> = ({
               placeholder="Stack Top"
               name={`StackTop ${index}`}
             />
-            <Form.Control
-              required
-              placeholder="next state"
-              name={`NextState ${index}`}
-            />
+            <Form.Select required name={`NextState ${index}`}>
+              {Array.from(Array(stateCount)).map((c, index) => {
+                return <option key={index}>q{index}</option>;
+              })}
+            </Form.Select>
             <Form.Control
               required
               placeholder="stack push"

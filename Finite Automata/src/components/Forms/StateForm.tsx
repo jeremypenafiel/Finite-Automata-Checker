@@ -3,30 +3,18 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import Fade from "react-bootstrap/Fade";
 
-const StateForm = () => {
-  const [stateCounter, setStateCounter] = useState(0);
+interface StateFormProps {
+  stateCount: number;
+}
 
-  const handleAddStateClick = () => {
-    setStateCounter(stateCounter + 1);
-  };
-  const handleDeleteStateClick = () => {
-    if (stateCounter === 0) {
-      return;
-    }
-    setStateCounter(stateCounter - 1);
-  };
+const StateForm: React.FC<StateFormProps> = ({ stateCount }) => {
   return (
     <Form.Group>
-      <button type="button" onClick={handleAddStateClick}>
-        Add State
-      </button>
-      <button type="button" onClick={handleDeleteStateClick}>
-        Delete State
-      </button>
-      {Array.from(Array(stateCounter)).map((c, index) => {
+      {Array.from(Array(stateCount)).map((c, index) => {
         return (
-          <Col>
+          <Col key={index}>
             <InputGroup>
               <InputGroup.Text>State {index + 1}: </InputGroup.Text>
               <InputGroup.Text>Final State: </InputGroup.Text>
@@ -35,8 +23,8 @@ const StateForm = () => {
               ></InputGroup.Checkbox>
               <Form.Control
                 readOnly
-                disabled
                 required
+                value={`q${index}`}
                 placeholder={`q${index}`}
                 name={`State${index}`}
               />

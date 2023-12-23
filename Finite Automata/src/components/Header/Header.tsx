@@ -9,12 +9,12 @@ const Header = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
       <Container>
-        <Navbar.Brand href="#home">Finite Automata</Navbar.Brand>
+        <Navbar.Brand href="/">Finite Automata</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#pda">Pushdown Automata</Nav.Link>
-            <Nav.Link href="#cfg">Context-free Grammar</Nav.Link>
+            <Nav.Link href="/PDA">Pushdown Automata</Nav.Link>
+            <Nav.Link href="/PDA">Context-free Grammar</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

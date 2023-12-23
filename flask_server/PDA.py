@@ -8,6 +8,7 @@ class PDA:
         self.gamma: deque[str] = deque()
         self.transitions: List[Transition] = list()
         self.gamma.append("Z")
+        self.states: dict[str, State] = dict()
 
     def delta(self, string_input: str, initial_state: State) -> bool:
         """Accepts or rejects a string based on the transition functions and prints transitions and stack at each step
@@ -66,7 +67,12 @@ class PDA:
 
         return stack
     
-
+    def add_state(self, state: str) -> None:
+        self.states[state] = State(self.gamma, state)
+    
+    def set_final_state(self, state: str) -> None:
+        self.states[state].setFinal()
+        
     def main(self) -> None:
         q0 = State(self.gamma, "q0")
         q1 = State(self.gamma, "q1")
@@ -82,7 +88,7 @@ class PDA:
         result = self.delta("011", q0)
         print(result)
 
-
+    
 if __name__ == "__main__":
 
     pda: PDA = PDA()
