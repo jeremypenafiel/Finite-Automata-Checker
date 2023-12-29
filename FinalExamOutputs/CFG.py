@@ -1,3 +1,4 @@
+from re import X
 from typing import List
 from Production import Production
 
@@ -54,12 +55,15 @@ class CFG:
 
     def main(self) -> None:
         """Main function of the class
+        Edit here to test the CFG with different productions
         """        
-        S: Production = Production("S", ["aXA", "aCAXA", "aA", "aCAA", "aC"])
-        A: Production = Production("A", ["aX", "aCAX", "a", "aCA"])
-        X: Production = Production("X", ["aXAX", "aCAXAX", "aAX", "aCAAX", "aXA", "aCAXA", "aA", "aCAA"])
-        B: Production = Production("B", ["a"])
-        C: Production = Production("C", ["c"])
+
+        '''GNFs nga gubaon lente'''
+        # S: Production = Production("S", ["aXA", "aCAXA", "aA", "aCAA", "aC"])
+        # A: Production = Production("A", ["aX", "aCAX", "a", "aCA"])
+        # X: Production = Production("X", ["aXAX", "aCAXAX", "aAX", "aCAAX", "aXA", "aCAXA", "aA", "aCAA"])
+        # B: Production = Production("B", ["a"])
+        # C: Production = Production("C", ["c"])
 
 
         
@@ -70,11 +74,20 @@ class CFG:
         # E: Production = Production("E", ["a"])
         # F: Production = Production("F", ["b"])
         
+        # self.p.append(S)
+        # self.p.append(A)
+        # self.p.append(B)
+        # self.p.append(C)
+        # self.p.append(X)
+
+
+        '''Sample nga ga work '''
+
+        S: Production = Production("S", ["0X0"])
+        X: Production = Production("X", ["00X00", "1"])
         self.p.append(S)
-        self.p.append(A)
-        self.p.append(B)
-        self.p.append(C)
         self.p.append(X)
+
         
         result = self.produce_iterate(start_production=S)
         print(f'Final string: {result}')

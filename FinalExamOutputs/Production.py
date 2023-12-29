@@ -8,6 +8,7 @@ class Production:
         self.weights: List[float] = list()
         self.set_weights()
     
+
     def set_weights(self) -> None:
         """Sets the weights of the productions
         """        
@@ -28,7 +29,6 @@ class Production:
                 self.weights.append(HIGHER_WEIGHT)
             
 
-
     def translate(self) -> str:
         """Returns a randomly chosen body with a bias towards a body with all nonterminals
 
@@ -39,6 +39,7 @@ class Production:
         returned_body:List[str] = random.choices(self.body, weights=self.weights, k=1)
 
         return returned_body[0]
+
 
     def isHead(self, symbol: str) -> bool:
         """Returns True if symbol is the head of the production, False otherwise
@@ -53,6 +54,7 @@ class Production:
     
 
 def main() ->None:
+    '''For testing the productions only. Run the CFG.py file to test the grammar'''
     S: Production = Production("S", ["aXa"])
     X: Production = Production("X", ["aaXaa", "b"])
 
