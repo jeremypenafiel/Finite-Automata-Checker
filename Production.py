@@ -12,7 +12,7 @@ class Production:
         """Sets the weights of the productions
         """        
         HIGHER_WEIGHT: float = 1
-        LOWER_WEIGHT: float = 0.8
+        LOWER_WEIGHT: float = 0.5
 
         for production in self.body:
             higher_char_found: bool = False

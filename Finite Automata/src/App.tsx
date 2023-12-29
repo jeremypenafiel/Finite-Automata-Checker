@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PDA from "./components/PDA/PDA";
+import CFG from "./components/CFG/CFG";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PDA />} />
           <Route path="/PDA" element={<PDA />} />
+          <Route path="/CFG" element={<CFG />} />
         </Routes>
       </Router>
     </>
