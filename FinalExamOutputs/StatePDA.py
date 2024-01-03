@@ -12,7 +12,7 @@ class State:
     def __str__(self) -> str:
         return self.rep
 
-    def setFinal(self) -> None:
+    def set_final(self) -> None:
         """Sets state to final state
         """      
         self.f = True
@@ -34,7 +34,7 @@ class State:
         return None
 
 
-    def getTopStackSymbol(self) -> str:
+    def get_top_stack_symbol(self) -> str:
         """Gets the symbol on the top of the stack
 
         Returns:
@@ -43,14 +43,14 @@ class State:
         return self.gamma[-1]
     
 
-    def showStack(self) -> None:
+    def show_stack(self) -> None:
         """Prints the stack vertically
         """        
         for symbol in reversed(self.gamma):
             print(f'|{symbol}|\n')
 
     
-    def setTransition(self, input_symbol: str, stack_pop_symbol: str, next_state: Self, stack_push_symbols: str) -> None:
+    def set_transition(self, input_symbol: str, stack_pop_symbol: str, next_state: Self, stack_push_symbols: str) -> None:
         """Sets transition function
 
         Args:
@@ -62,7 +62,7 @@ class State:
         self.transitions.append(Transition(self, input_symbol, stack_pop_symbol, next_state, stack_push_symbols))
 
 
-    def setStack(self, stack:deque[str]) -> None:
+    def set_stack(self, stack:deque[str]) -> None:
         """Sets the stack of the state
 
         Args:
