@@ -34,11 +34,10 @@ class PDA:
             transition: Transition|None = currentState.delta(symbol, currentState.getTopStackSymbol())
 
             # No transition found
-            if transition == None:
+            if transition is None:
                 return False
             
-            print(f'Transition function\nd({currentState.rep}, {symbol}, {currentState.getTopStackSymbol()}) = ({transition.next_state.rep}, {transition.push_symbol})')
-            
+            print(transition)
             # Sets the stack of next state
             next_stack: deque[str] = self.perform_stack_operations(currentState.gamma, transition.push_symbol)
             currentState = transition.next_state
@@ -79,7 +78,7 @@ class PDA:
         q1.setTransition("1", "0",  q1, "e")
         q1.setTransition("e", "Z",  q2, "Z")
 
-        result = self.delta("011", q0)
+        result = self.delta("0111", q0)
         print(result)
 
 

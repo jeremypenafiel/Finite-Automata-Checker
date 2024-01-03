@@ -9,6 +9,8 @@ class State:
         self.transitions: List[Transition] = list()# List of transitions       
         self.rep: str = rep                 # String representation of the name of the state
 
+    def __str__(self) -> str:
+        return self.rep
 
     def setFinal(self) -> None:
         """Sets state to final state
