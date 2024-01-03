@@ -5,7 +5,7 @@ from StatePDA import State
 
 class PDA:
     def __init__(self) -> None:
-        self.gamma: deque[str] = deque()
+        self.gamma: deque[str] = deque()  # deque data structure used to simulate a stack
         self.transitions: List[Transition] = list()
         self.gamma.append("Z")
 
