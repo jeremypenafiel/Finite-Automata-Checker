@@ -14,7 +14,11 @@ class Transition:
     push_symbol: str
 
     def __str__(self) -> str:
+        """String representation when instance is printed
 
+        Returns:
+            str: string representation of instance
+        """
         return f'Transition function\nd({self.current_state}, {self.input_symbol}, {self.pop_symbol}) = ({self.next_state}, {self.push_symbol})'
             
 

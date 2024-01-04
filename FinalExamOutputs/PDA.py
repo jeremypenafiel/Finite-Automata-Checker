@@ -5,9 +5,9 @@ from StatePDA import State
 
 class PDA:
     def __init__(self) -> None:
-        self.gamma: deque[str] = deque()  # deque data structure used to simulate a stack
+        # self.gamma: deque[str] = deque()  # deque data structure used to simulate a stack
         self.transitions: List[Transition] = list()
-        self.gamma.append("Z")
+        # self.gamma.append("Z")
 
     def delta(self, string_input: str, initial_state: State) -> bool:
         """Accepts or rejects a string based on the transition functions and prints transitions and stack at each step
@@ -29,7 +29,7 @@ class PDA:
         Breaks and rejects string if no transition can be done based on current top of stack symbol and input symbol and current state 
         '''
         for symbol in string_input:
-            print("---\n")
+            print("-------------- \nCurrent Stack\n")
             currentState.show_stack()
             transition: Transition|None = currentState.delta(symbol, currentState.get_top_stack_symbol())
 
@@ -37,7 +37,7 @@ class PDA:
             if transition is None:
                 return False
             
-            print(transition)
+            print(f"{transition}\n")
             # Sets the stack of next state
             next_stack: deque[str] = self.perform_stack_operations(currentState.gamma, transition.push_symbol)
             currentState = transition.next_state
@@ -67,9 +67,9 @@ class PDA:
     
 
     def main(self) -> None:
-        q0 = State(self.gamma, "q0")
-        q1 = State(self.gamma, "q1")
-        q2 = State(self.gamma, "q2")
+        q0 = State("q0")
+        q1 = State("q1")
+        q2 = State("q2")
         q2.set_final()
 
         q0.set_transition("0", "Z",  q0, "00Z")
@@ -78,8 +78,9 @@ class PDA:
         q1.set_transition("1", "0",  q1, "e")
         q1.set_transition("e", "Z",  q2, "Z")
 
-        result = self.delta("0111", q0)
-        print(result)
+        is_valid_string: bool = self.delta("0001111", q0)
+        result: str = "accepted" if is_valid_string else "rejected"
+        print(f"The string is {result}")
 
 
 if __name__ == "__main__":

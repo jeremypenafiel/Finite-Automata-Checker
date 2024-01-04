@@ -3,18 +3,26 @@ from collections import deque
 from TransitionPDA import Transition
 
 class State:
-    def __init__(self, stack: deque[str], rep: str):
-        self.f: bool =  False               # Treue fi state is final state
-        self.gamma: deque[str] = stack      # Represents the stack
-        self.transitions: List[Transition] = list()# List of transitions       
-        self.rep: str = rep                 # String representation of the name of the state
+    def __init__(self, representation: str):
+        self.f: bool =  False               # True if state is final state
+        self.gamma: deque[str] = deque()    # Represents the stack
+        self.transitions: List[Transition] = list() # List of transitions       
+        self.string_representation: str = representation # String representation of the name of the state
 
+        self.gamma.append("Z")
+        
     def __str__(self) -> str:
-        return self.rep
+        """String representation when instance is printed
+
+        Returns:
+            str: string representation of instance
+        """
+        return self.string_representation
 
     def set_final(self) -> None:
         """Sets state to final state
-        """      
+        """
+       
         self.f = True
 
 
