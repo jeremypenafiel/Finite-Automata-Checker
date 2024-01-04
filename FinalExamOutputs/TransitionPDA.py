@@ -5,6 +5,7 @@ from dataclasses import dataclass
 if TYPE_CHECKING:
     from StatePDA import State
 
+
 @dataclass
 class Transition:
     current_state: State
@@ -19,8 +20,7 @@ class Transition:
         Returns:
             str: string representation of instance
         """
-        return f'Transition function\nd({self.current_state}, {self.input_symbol}, {self.pop_symbol}) = ({self.next_state}, {self.push_symbol})'
-            
+        return f"Transition function\nd({self.current_state}, {self.input_symbol}, {self.pop_symbol}) = ({self.next_state}, {self.push_symbol})"
 
-
-   
+    def __repr__(self) -> str:
+        return f"Transition function\nd({self.current_state}, {self.input_symbol}, {self.pop_symbol}) = ({self.next_state}, {self.push_symbol})"

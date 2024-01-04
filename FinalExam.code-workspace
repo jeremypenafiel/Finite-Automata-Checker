@@ -8,6 +8,8 @@
     "python.analysis.typeCheckingMode": "strict",
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.wordWrapColumn": 100,
+    "html.format.wrapLineLength": 150
   }
 }
