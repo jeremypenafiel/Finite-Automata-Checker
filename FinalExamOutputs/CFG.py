@@ -39,22 +39,6 @@ class CFG:
                     print(final_string)
                     break
 
-            # if letter.isupper():
-            #     for production in self.p:
-            #         if production.is_head(letter):
-            #             final_string = (
-            #                 final_string[:index]
-            #                 + production.translate()
-            #                 + final_string[index + 1 :]
-            #             )
-            #             print(final_string)
-            #             break
-
-            #     # don't decrement or increment if head is replaced
-            #     continue
-            # # increment if lowercase is found
-            # index += 1
-
         return final_string
 
     def main(self) -> None:
