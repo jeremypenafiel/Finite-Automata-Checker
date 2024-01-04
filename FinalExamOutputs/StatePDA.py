@@ -31,14 +31,14 @@ class State:
         self.f = True
 
     def delta(self, input_symbol: str, pop_symbol: str) -> Transition | None:
-        """Returns a list of transitions that can be done based on the input symbol and the symbol on top of the stack
+        """Returns a transition that can be done based on the input symbol and the symbol on top of the stack
 
         Args:
             input_symbol (str): input symbol
             stack_pop_symbol (str): symbol on top of the stack
 
         Returns:
-            List[Transition]: list of transitions
+            Transition: the next transition
         """
         for transition in self.transitions:
             if (
