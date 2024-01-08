@@ -37,18 +37,22 @@ class CFG:
                         + final_string[index + 1 :]
                     )
                     print(final_string)
-                    break
 
         return final_string
 
     def main(self) -> None:
         """Main function of the class"""
 
-        S: Production = Production("S", ["aXa"])
-        X: Production = Production("X", ["aaXaa", "b"])
-
+        S: Production = Production("S", ["mXY", "mY", "mXO", "mO"])
+        X: Production = Production("X", ["mX", "m"])
+        Y: Production = Production("Y", ["mXP", "mP",])
+        O: Production = Production("O", ["o"])
+        P: Production = Production("P", ["p"])
         self.p.append(S)
         self.p.append(X)
+        self.p.append(Y)
+        self.p.append(O)
+        self.p.append(P)
 
         result = self.produce(start_production=S)
         print(f"Final string: {result}")
