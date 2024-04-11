@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
@@ -30,7 +30,7 @@ const TransitionFunctionForm: React.FC<TransitionFunctionFormProps> = ({
       <button type="button" onClick={handleDeleteRuleClick}>
         Delete Rule
       </button>
-      {Array.from(Array(ruleCounter)).map((c, index) => {
+      {Array.from(Array(ruleCounter)).map((_c, index) => {
         return (
           <InputGroup key={index}>
             <InputGroup.Text>Rule {index + 1}: </InputGroup.Text>
@@ -40,7 +40,7 @@ const TransitionFunctionForm: React.FC<TransitionFunctionFormProps> = ({
               name={`CurrentState ${index}`}
             /> */}
             <Form.Select required name={`CurrentState ${index}`}>
-              {Array.from(Array(stateCount)).map((c, index) => {
+              {Array.from(Array(stateCount)).map((_c, index) => {
                 return <option key={index}>q{index}</option>;
               })}
             </Form.Select>
@@ -55,7 +55,7 @@ const TransitionFunctionForm: React.FC<TransitionFunctionFormProps> = ({
               name={`StackTop ${index}`}
             />
             <Form.Select required name={`NextState ${index}`}>
-              {Array.from(Array(stateCount)).map((c, index) => {
+              {Array.from(Array(stateCount)).map((_c, index) => {
                 return <option key={index}>q{index}</option>;
               })}
             </Form.Select>
