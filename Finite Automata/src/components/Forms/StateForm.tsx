@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import Fade from "react-bootstrap/Fade";
 
 interface StateFormProps {
   stateCount: number;
@@ -12,7 +9,7 @@ interface StateFormProps {
 const StateForm: React.FC<StateFormProps> = ({ stateCount }) => {
   return (
     <Form.Group>
-      {Array.from(Array(stateCount)).map((c, index) => {
+      {Array.from(Array(stateCount)).map((_c, index) => {
         return (
           <Col key={index}>
             <InputGroup>

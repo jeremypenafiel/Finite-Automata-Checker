@@ -2,7 +2,6 @@ import Forms from "../Forms/Forms";
 import Header from "../Header/Header";
 import { useState, useEffect } from "react";
 import "./pda.css";
-import React from "react";
 import Form from "react-bootstrap/Form";
 import Template1Form from "../Forms/Template1Form";
 import Template2Form from "../Forms/Template2Form";

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Button } from "react-bootstrap";
-import Col from "react-bootstrap/Col";
 import TransitionFunctionTemplateForm from "./TransitionFunctionTemplateForm";
 import StateTemplateForm from "./StateTemplateForm";
 
