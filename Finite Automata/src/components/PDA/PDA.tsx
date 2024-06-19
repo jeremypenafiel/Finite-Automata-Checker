@@ -11,6 +11,7 @@ const PDA = () => {
   const [showCustom, setShowCustom] = useState(true);
   const [showTemplate1, setShowTemplate1] = useState(false);
   const [showTemplate2, setShowTemplate2] = useState(false);
+  const SITE = "https://finite-automata-checker.onrender.com/";
 
   useEffect(() => {
     const iframe = document.getElementById("hiddenframe");
@@ -18,9 +19,9 @@ const PDA = () => {
 
     if (iframe) {
       iframe.addEventListener("load", async () => {
-        const res = await fetch("http://127.0.0.1:5000/PDA");
+        const res = await fetch(SITE + "PDA");
         const data = await res.json();
-        
+
         console.log(res);
         console.log(data);
         console.log(data.valid);

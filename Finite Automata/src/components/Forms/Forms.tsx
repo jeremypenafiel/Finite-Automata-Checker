@@ -8,13 +8,17 @@ import StateForm from "./StateForm";
 const Forms = () => {
   const [validated, setValidated] = useState(false);
   const [stateCounter, setStateCounter] = useState(1);
+  const SITE = "https://finite-automata-checker.onrender.com/";
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
+      console.log("invalid");
       event.preventDefault();
       event.stopPropagation();
+      return;
     }
+    console.log("submit");
 
     setValidated(true);
   };
@@ -34,7 +38,7 @@ const Forms = () => {
       <Form
         noValidate
         validated={validated}
-        action="http://localhost:5000/PDA"
+        action={SITE + "PDA"}
         method="POST"
         target="hiddenframe"
         onSubmit={handleSubmit}

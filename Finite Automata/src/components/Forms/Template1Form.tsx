@@ -7,6 +7,7 @@ import StateTemplateForm from "./StateTemplateForm";
 
 const Template1Form = () => {
   const [validated, setValidated] = useState(false);
+  const SITE = "https://finite-automata-checker.onrender.com/";
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -23,7 +24,7 @@ const Template1Form = () => {
       <Form
         noValidate
         validated={validated}
-        action="http://127.0.0.1:5000/PDA"
+        action={SITE + "PDA"}
         method="POST"
         target="hiddenframe"
         onSubmit={handleSubmit}

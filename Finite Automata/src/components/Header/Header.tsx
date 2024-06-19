@@ -12,7 +12,7 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/PDA">Pushdown Automata</Nav.Link>
-            <Nav.Link href="/CFG">Context-free Grammar</Nav.Link>
+            {/* <Nav.Link href="/CFG">Context-free Grammar</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
