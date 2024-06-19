@@ -10,7 +10,7 @@ class PDAController:
         self.final_states: list[str] = list()
         self.rules: list[str] = list()
 
-    def handle_data(self, request_form) -> dict[str, list[str]]:
+    def handle_data(self, request_form: dict[str, str]) -> dict[str, list[str]]:
         keys_to_remove: list[str] = list()
         mutable_dict: dict = request_form.to_dict()
 

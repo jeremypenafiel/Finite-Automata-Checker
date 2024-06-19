@@ -2,5 +2,10 @@ from waitress import serve
 
 import server 
 
+PORT = 8000
+mode = "dev"
 if __name__ == '__main__':
-        serve(server.app, host='0.0.0.0', port=42069, threads=1)
+        if mode == "dev":
+            server.app.run( port=PORT, debug=True)
+        else:
+                serve(server.app,port=PORT, threads=1)
