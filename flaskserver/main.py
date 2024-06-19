@@ -3,7 +3,7 @@ from waitress import serve
 import server 
 
 PORT = 8000
-mode = "dev"
+mode = "prod"
 if __name__ == '__main__':
         if mode == "dev":
             server.app.run( port=PORT, debug=True)
