@@ -4,13 +4,13 @@ from flask_cors import CORS, cross_origin
 # from waitress import serve
 
 
-app = Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+my_app = Flask(__name__)
+cors = CORS(my_app)
+my_app.config['CORS_HEADERS'] = 'Content-Type'
 
 valid_PDA:bool = False
 
-@app.route('/PDA', methods=['GET'])
+@my_app.route('/PDA', methods=['GET'])
 @cross_origin()
 def is_valid_string():
     print("hello")
@@ -20,7 +20,7 @@ def is_valid_string():
     }
     return jsonify(data)
 
-@app.route('/PDA', methods=['POST'])
+@my_app.route('/PDA', methods=['POST'])
 @cross_origin()
 def handle_data():
     global valid_PDA
@@ -33,7 +33,7 @@ def handle_data():
     clean_data: dict[str, list[str]] = pda_controller.handle_data(request.form)
     valid_PDA = pda_controller.init_pda(clean_data)
     print(valid_PDA)
-    response = app.response_class(
+    response = my_app.response_class(
         status=200
     )
     return response
