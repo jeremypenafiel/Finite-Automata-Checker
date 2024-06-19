@@ -20,6 +20,7 @@ const PDA = () => {
       iframe.addEventListener("load", async () => {
         const res = await fetch("http://127.0.0.1:5000/PDA");
         const data = await res.json();
+        
         console.log(res);
         console.log(data);
         console.log(data.valid);
