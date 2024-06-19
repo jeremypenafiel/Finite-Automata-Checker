@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from pda_controller import PDAController
 from flask_cors import CORS, cross_origin
-from waitress import serve
+# from waitress import serve
 
 
 app = Flask(__name__)
@@ -13,6 +13,7 @@ valid_PDA:bool = False
 @app.route('/PDA', methods=['GET'])
 @cross_origin()
 def is_valid_string():
+    print("hello")
     global valid_PDA
     data = {
         'valid': valid_PDA
@@ -37,10 +38,10 @@ def handle_data():
     )
     return response
 
-mode = "prod"
+# mode = "prod"
 
-if __name__ == '__main__':
-    if mode == "dev":
-        app.run(host='0.0.0.0', port=42069)
-    else:
-        serve(app, host='0.0.0.0', port=42069, threads=1)
+# if __name__ == '__main__':
+#     if mode == "dev":
+#         app.run(host='0.0.0.0', port=42069)
+#     else:
+#         serve(app, host='0.0.0.0', port=42069, threads=1)
