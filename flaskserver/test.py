@@ -1,0 +1,4 @@
+string = "{'FinalState2': 'on', 'CurrentState 0': 'q0', 'InputSymbol 0': '0', 'StackTop 0': 'Z', 'NextState 0': 'q0', 'StackPush 0': '0Z', 'CurrentState 1': 'q0', 'InputSymbol 1': '0', 'StackTop 1': '0', 'NextState 1': 'q0', 'StackPush 1': '00', 'CurrentState 2': 'q0', 'InputSymbol 2': '1', 'StackTop 2': '0', 'NextState 2': 'q1', 'StackPush 2': 'e', 'CurrentState 3': 'q1', 'InputSymbol 3': '1', 'StackTop 3': '0', 'NextState 3': 'q1', 'StackPush 3': 'e', 'CurrentState 4': 'q1', 'InputSymbol 4': 'e', 'StackTop 4': 'Z', 'NextState 4': 'q2', 'StackPush 4': 'Z'}"
+
+string = string.replace('\'', "\"")
+print(string)

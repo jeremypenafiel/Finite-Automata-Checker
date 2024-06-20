@@ -4,10 +4,9 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Button } from "react-bootstrap";
 import TransitionFunctionTemplateForm from "./TransitionFunctionTemplateForm";
 import StateTemplateForm from "./StateTemplateForm";
-
+import {SITE} from "../../constants.ts";
 const Template1Form = () => {
   const [validated, setValidated] = useState(false);
-  const SITE = "https://finite-automata-checker.onrender.com/";
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -24,7 +23,7 @@ const Template1Form = () => {
       <Form
         noValidate
         validated={validated}
-        action={SITE + "PDA"}
+        action={ SITE+ "PDA"}
         method="POST"
         target="hiddenframe"
         onSubmit={handleSubmit}

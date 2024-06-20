@@ -5,13 +5,13 @@ import "./pda.css";
 import Form from "react-bootstrap/Form";
 import Template1Form from "../Forms/Template1Form";
 import Template2Form from "../Forms/Template2Form";
+import {SITE} from "../../constants.ts";
 
 const PDA = () => {
   const [result, setResult] = useState(false);
   const [showCustom, setShowCustom] = useState(true);
   const [showTemplate1, setShowTemplate1] = useState(false);
   const [showTemplate2, setShowTemplate2] = useState(false);
-  const SITE = "https://finite-automata-checker.onrender.com/";
 
   useEffect(() => {
     const iframe = document.getElementById("hiddenframe");
@@ -35,23 +35,30 @@ const PDA = () => {
     <>
       <Header />
       <h1>PUSHDOWN AUTOMATA</h1>
-      {result ? <h2>String is valid</h2> : <h2>String is invalid</h2>}
+      {result ? <h2 style={{
+          backgroundColor: "forestgreen",
+          padding: 10
+      }}>String is valid</h2> :
+          <h2 style={{
+              backgroundColor: "orangered",
+              padding: 10
+          }}>String is invalid</h2>}
       <br></br>
 
       <Form.Select
         onChange={(e) => {
           setShowCustom(e.target.value === "Create your own PDA");
           setShowTemplate1(
-            e.target.value === "PDA that accepts equal 0s and 1s"
+            e.target.value === "PDA that accepts equal 0s and 1s (0s must precede 1s)"
           );
           setShowTemplate2(
-            e.target.value === "PDA that accepts twice the 1s than 0s"
+            e.target.value === "PDA that accepts twice the 1s than 0s (0s must precede 1s)"
           );
         }}
       >
         <option>Create your own PDA</option>
-        <option>PDA that accepts equal 0s and 1s</option>
-        <option>PDA that accepts twice the 1s than 0s</option>
+        <option>PDA that accepts equal 0s and 1s (0s must precede 1s)</option>
+        <option>PDA that accepts twice the 1s than 0s (0s must precede 1s)</option>
       </Form.Select>
       {showCustom && <Forms />}
       {showTemplate1 && <Template1Form />}
