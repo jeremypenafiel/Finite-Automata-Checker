@@ -4,11 +4,12 @@ import InputGroup from "react-bootstrap/InputGroup";
 import TransitionFunctionForm from "./TransitionFunctionForm";
 import { Button } from "react-bootstrap";
 import StateForm from "./StateForm";
+import {SITE} from "../../constants.ts";
 
 const Forms = () => {
   const [validated, setValidated] = useState(false);
   const [stateCounter, setStateCounter] = useState(1);
-  const SITE = "https://finite-automata-checker.onrender.com/";
+  // const SITE = "https://finite-automata-checker.onrender.com/";
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -40,7 +41,6 @@ const Forms = () => {
         validated={validated}
         action={SITE + "PDA"}
         method="POST"
-        target="hiddenframe"
         onSubmit={handleSubmit}
       >
         <InputGroup className="mb-3">
